@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:time_keeper/components/shared/number_scroll.dart';
+import 'package:go_router/go_router.dart';
+
 
 class MyTimer extends StatefulWidget {
   const MyTimer({super.key, this.duration = 60, required this.timeLimit, this.onElapsedTimeChanged});
@@ -67,6 +69,7 @@ class _MyTimerState extends State<MyTimer> {
       remainingTime = widget.duration;
       isRunning = true;
     });
+    _startTimer();
   }
 
   void removeGlass() {
@@ -178,7 +181,14 @@ class _MyTimerState extends State<MyTimer> {
               ElevatedButton(onPressed: _resetTimer, style: ElevatedButton.styleFrom(
                   shape: const CircleBorder(),
                   padding: const EdgeInsets.all(16),
-                ),child: const Icon(Icons.refresh),)
+                ),child: const Icon(Icons.refresh),),
+              const SizedBox(height: 8.0),
+              ElevatedButton(onPressed: (){
+                context.pop();
+              }, style: ElevatedButton.styleFrom(
+                  shape: const CircleBorder(),
+                  padding: const EdgeInsets.all(16),
+                ),child: const Icon(Icons.home),),
             ],
           )
         ],

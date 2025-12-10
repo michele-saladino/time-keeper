@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:time_keeper/components/timer/my_timer.dart';
+import 'package:time_keeper/router.dart';
 import 'package:window_manager/window_manager.dart';
 
 void main() async {
@@ -28,26 +28,9 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color bgColor = Colors.green;
-    final int time = 60 * 20;
-    final int timeLimit = 5;
-
-    void onElapsedTimeChanged(int elapsedTime) {
-      if (elapsedTime >= timeLimit) {
-        bgColor = Colors.redAccent;
-      } else {
-        bgColor = Colors.green;
-      }
-    }
-
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: bgColor,
-        body: Center(
-          child: MyTimer(duration: time, onElapsedTimeChanged: onElapsedTimeChanged, timeLimit: timeLimit),
-        ),
-      ),
+      routerConfig: router,
     );
   }
 }
