@@ -14,17 +14,10 @@ build/
 *.log
 *.lock
 # Android
-android/app/debug/
-android/app/release/
-android/.gradle/
-android/local.properties
+android
 # iOS
-ios/Pods/
-ios/.symlinks/
-ios/Flutter/Flutter.framework
-ios/Flutter/Flutter.podspec
-ios/Flutter/App.framework
-ios/Flutter/Generated.xcconfig
+ios
+
 # Web
 web/.dart_tool/
 web/build/
