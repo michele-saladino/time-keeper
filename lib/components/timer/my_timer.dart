@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:time_keeper/components/shared/number_scroll.dart';
 import 'package:go_router/go_router.dart';
+import 'package:time_keeper/components/timer/water_glasses.dart';
 
 
 class MyTimer extends StatefulWidget {
@@ -19,6 +20,8 @@ class _MyTimerState extends State<MyTimer> {
   late int remainingTime;
   bool isRunning = true;
   int numberOfGlasses = 0;
+
+  final int glassInterval = 60*30; // seconds
 
   @override
   void initState() {
@@ -45,7 +48,7 @@ class _MyTimerState extends State<MyTimer> {
   }
 
   void _startGlassTimer() {
-    Future.delayed(const Duration(minutes: 30), () {
+    Future.delayed(Duration(seconds: glassInterval), () {
       addGlass();
       _startGlassTimer();
     });
@@ -151,16 +154,7 @@ class _MyTimerState extends State<MyTimer> {
                     ],
                   ),
                   const SizedBox(height: 8.0),
-                  Row(
-                    children: [
-                      ...List.generate(
-                        numberOfGlasses,
-                        (index) => GestureDetector(
-                          onTap: removeGlass,
-                          child: const Icon(Icons.local_drink, color: Colors.white, size: 18)),
-                      ),
-                    ],
-                  )
+                  WaterGlasses(numberOfGlasses: numberOfGlasses, removeGlass: removeGlass,),
                 ],
               ),
             ),
